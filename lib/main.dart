@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:indiacoronacounter/clipedHeaderWidget.dart';
 import 'cardWidgets.dart';
 
@@ -15,6 +16,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  int infected=21365;
+  int recovered=3659;
+  int dead=1968;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,9 +45,13 @@ class _MyAppState extends State<MyApp> {
                           style: TextStyle(
                               fontSize: 30.0,
                               fontFamily: 'BalooBhaina',
-                              color: Colors.deepOrangeAccent
+                              color: Colors.deepOrangeAccent,
                           ),
                         ),
+                      ),
+                    ),
+                    Expanded(
+                        child: SizedBox(width: 20,
                       ),
                     ),
                   ],
@@ -53,6 +61,126 @@ class _MyAppState extends State<MyApp> {
                 borderRadius: 25,
                 padding: EdgeInsets.symmetric(horizontal: 25),
                 margin: EdgeInsets.symmetric(horizontal: 30,vertical: 15),
+              ),
+              CustomCards(
+                width: double.infinity,
+                height: 170,
+                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                borderRadius: 10.0,
+                padding: EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Icon(
+                      Icons.account_circle,
+                      color: Colors.yellow,
+                      size:35.0,
+                    ),
+                    Text(
+                      'Current Cases',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 35.0,
+                      ),
+                    ),
+                    Container(
+                      width: 180.0,
+                      child: Divider(
+                        height: 1.0,
+                      ),
+                    ),
+                    Text(
+                      '$infected',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 35.0,
+                      ),
+                    ),
+                  ],
+                )
+              ),
+              CustomCards(
+                    height: 100,
+                    width: double.infinity,
+                    margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10,),
+                    padding: EdgeInsets.all(10.0),
+                    borderRadius: 10,
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Icon(
+                                Icons.account_circle,
+                                color: Colors.green,
+                                size:20.0,
+                              ),
+                              Text(
+                                'Current Cases',
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                  fontSize: 20.0,
+                                ),
+                              ),
+                              Container(
+                                width: 100.0,
+                                child: Divider(
+                                  height: 1.0,
+                                ),
+                              ),
+                              Text(
+                                '$recovered',
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                  fontSize: 20.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Icon(
+                                Icons.account_circle,
+                                color: Colors.redAccent,
+                                size:20.0,
+                              ),
+                              Text(
+                                'Current Cases',
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                  fontSize: 20.0,
+                                ),
+                              ),
+                              Container(
+                                width: 100.0,
+                                child: Divider(
+                                  height: 1.0,
+                                ),
+                              ),
+                              Text(
+                                '$dead',
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                  fontSize: 20.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+              CustomCards(
+                child: Container(),
+                height: 200.0,
+                width: double.infinity,
+                borderRadius: 10.0,
+                padding: EdgeInsets.symmetric(horizontal: 25),
+                margin: EdgeInsets.symmetric(horizontal: 15.0,vertical: 10.0),
               ),
             ],
           ),

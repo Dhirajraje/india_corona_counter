@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:indiacoronacounter/header.dart';
+import 'package:indiacoronacounter/cliped_widgets.dart';
 
 void main() => runApp(
   MaterialApp(
@@ -20,7 +20,8 @@ class _MyAppState extends State<MyApp> {
         body:SingleChildScrollView(
           child: Column(
             children: <Widget>[
-                appHeaderContainer(),
+              appHeaderContainer(),
+
             ],
           ),
         ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:indiacoronacounter/clipedHeaderWidget.dart';
 import 'cardWidgets.dart';
+import 'webScrap.dart';
 
 void main() => runApp(
   MaterialApp(
@@ -64,7 +65,7 @@ class _MyAppState extends State<MyApp> {
               ),
               CustomCards(
                 width: double.infinity,
-                height: 170,
+                height: 190,
                 margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 borderRadius: 10.0,
                 padding: EdgeInsets.all(20.0),
@@ -81,6 +82,7 @@ class _MyAppState extends State<MyApp> {
                       style: TextStyle(
                         color: Colors.black54,
                         fontSize: 35.0,
+                        fontFamily: 'BalooBhaina',
                       ),
                     ),
                     Container(
@@ -94,13 +96,14 @@ class _MyAppState extends State<MyApp> {
                       style: TextStyle(
                         color: Colors.black54,
                         fontSize: 35.0,
+                        fontFamily: 'BaloooBhaina',
                       ),
                     ),
                   ],
                 )
               ),
               CustomCards(
-                    height: 100,
+                    height: 130,
                     width: double.infinity,
                     margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10,),
                     padding: EdgeInsets.all(10.0),
@@ -117,10 +120,11 @@ class _MyAppState extends State<MyApp> {
                                 size:20.0,
                               ),
                               Text(
-                                'Current Cases',
+                                'Recovered',
                                 style: TextStyle(
                                   color: Colors.black54,
                                   fontSize: 20.0,
+                                  fontFamily: 'BalooBhaina',
                                 ),
                               ),
                               Container(
@@ -134,6 +138,7 @@ class _MyAppState extends State<MyApp> {
                                 style: TextStyle(
                                   color: Colors.black54,
                                   fontSize: 20.0,
+                                  fontFamily: 'BalooBhaina',
                                 ),
                               ),
                             ],
@@ -149,10 +154,11 @@ class _MyAppState extends State<MyApp> {
                                 size:20.0,
                               ),
                               Text(
-                                'Current Cases',
+                                'Deaths',
                                 style: TextStyle(
                                   color: Colors.black54,
                                   fontSize: 20.0,
+                                  fontFamily: 'BalooBhaina',
                                 ),
                               ),
                               Container(
@@ -166,6 +172,7 @@ class _MyAppState extends State<MyApp> {
                                 style: TextStyle(
                                   color: Colors.black54,
                                   fontSize: 20.0,
+                                  fontFamily: 'BalooBhaina',
                                 ),
                               ),
                             ],
@@ -175,12 +182,19 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ),
               CustomCards(
-                child: Container(),
-                height: 200.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    barGraph(color: Colors.yellow,element: 'Infected', value: infected, div: infected),
+                    barGraph(color: Colors.green,element: 'Recovered', value: recovered, div: infected),
+                    barGraph(color: Colors.red,element: 'Deaths', value: dead, div: infected),
+                  ],
+                ),
+                height: 300.0,
                 width: double.infinity,
                 borderRadius: 10.0,
                 padding: EdgeInsets.symmetric(horizontal: 25),
-                margin: EdgeInsets.symmetric(horizontal: 15.0,vertical: 10.0),
+                margin: EdgeInsets.all(10.0),
               ),
             ],
           ),

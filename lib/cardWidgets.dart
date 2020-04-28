@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -30,4 +31,53 @@ class CustomCards extends StatelessWidget {
       child:this.child,
     );
   }
+}
+// ignore: missing_return
+Color goodMatchColor(Color color){
+  if(color==Colors.green)
+    return Colors.teal;
+  else if(color==Colors.yellow)
+    return Colors.orangeAccent;
+  else if(color==Colors.red)
+    return Colors.pinkAccent;
+}
+Widget barGraph({int value,String element, Color color, int div}){
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.end,
+    children: <Widget>[
+      Icon(
+        Icons.account_circle,
+        color:color,
+        size: 30.0,
+      ),
+      Container(
+        width:30,
+        height: value/(div*0.005),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [goodMatchColor(color),color],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+          ),
+        ),
+      ),
+      Text(
+        '$value',
+        style: TextStyle(
+          fontSize: 16,
+          color: Colors.black54,
+          fontFamily: 'BalooBhaina',
+        ),
+      ),
+      Text(
+        '$element',
+        style: TextStyle(
+            fontSize: 16,
+            color: Colors.black54,
+          fontFamily: 'BalooBhaina',
+        ),
+      ),
+    ],
+  );
 }

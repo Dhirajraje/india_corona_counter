@@ -18,9 +18,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int infected = 21365;
-  int recovered = 3659;
-  int dead = 1968;
+  int infected = 1803655;
+  int recovered = 758642;
+  int dead = 38036;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -3,16 +3,22 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class CustomCards extends StatelessWidget {
-  double height=0,width=0,borderRadius=0;
-  EdgeInsets padding = EdgeInsets.all(0), margin =EdgeInsets.all(0);
-  Widget child=Container();
-  CustomCards({double height,double width, double borderRadius, EdgeInsets padding , EdgeInsets margin, Widget child}){
-      this.child = child;
-      this.height = height;
-      this.width = width;
-      this.borderRadius = borderRadius;
-      this.padding = padding;
-      this.margin = margin;
+  double height = 0, width = 0, borderRadius = 0;
+  EdgeInsets padding = EdgeInsets.all(0), margin = EdgeInsets.all(0);
+  Widget child = Container();
+  CustomCards(
+      {double height,
+      double width,
+      double borderRadius,
+      EdgeInsets padding,
+      EdgeInsets margin,
+      Widget child}) {
+    this.child = child;
+    this.height = height;
+    this.width = width;
+    this.borderRadius = borderRadius;
+    this.padding = padding;
+    this.margin = margin;
   }
   @override
   Widget build(BuildContext context) {
@@ -22,43 +28,45 @@ class CustomCards extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(this.borderRadius)),
-          boxShadow:[BoxShadow(
-            color: Colors.grey,
-          )]
-      ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey,
+            )
+          ]),
       padding: this.padding,
-      margin:this.margin,
-      child:this.child,
+      margin: this.margin,
+      child: this.child,
     );
   }
 }
+
 // ignore: missing_return
-Color goodMatchColor(Color color){
-  if(color==Colors.green)
+Color goodMatchColor(Color color) {
+  if (color == Colors.green)
     return Colors.teal;
-  else if(color==Colors.yellow)
+  else if (color == Colors.yellow)
     return Colors.orangeAccent;
-  else if(color==Colors.red)
-    return Colors.pinkAccent;
+  else if (color == Colors.red) return Colors.pinkAccent;
 }
-Widget barGraph({int value,String element, Color color, int div}){
+
+Widget barGraph({int value, String element, Color color, int div}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     mainAxisAlignment: MainAxisAlignment.end,
     children: <Widget>[
       Icon(
         Icons.account_circle,
-        color:color,
+        color: color,
         size: 30.0,
       ),
       Container(
-        width:30,
-        height: value/(div*0.005),
+        width: 30,
+        height: value / (div * 0.005),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [goodMatchColor(color),color],
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
+            colors: [goodMatchColor(color), color],
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
           ),
         ),
       ),
@@ -73,8 +81,8 @@ Widget barGraph({int value,String element, Color color, int div}){
       Text(
         '$element',
         style: TextStyle(
-            fontSize: 16,
-            color: Colors.black54,
+          fontSize: 16,
+          color: Colors.black54,
           fontFamily: 'BalooBhaina',
         ),
       ),

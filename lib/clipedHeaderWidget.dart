@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // ignore: non_constant_identifier_names
-ClipPath appHeaderContainer(){
+ClipPath appHeaderContainer() {
   return ClipPath(
     clipper: MyCustomClipper(),
     child: Container(
@@ -18,31 +18,33 @@ ClipPath appHeaderContainer(){
       child: Row(
         children: <Widget>[
           Expanded(
-            child: Image.asset('ImageDirectory/wear_mask.png',),
-          ),
-        Expanded(
-          child: Text(
-            'Stay home,\nStay safe',
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.white,
-              fontFamily: 'BalooBhaina',
+            child: Image.asset(
+              'ImageDirectory/wear_mask.png',
             ),
-
-        ),
-        ),
+          ),
+          Expanded(
+            child: Text(
+              'Stay home,\nStay safe',
+              style: TextStyle(
+                fontSize: 30,
+                color: Colors.white,
+                fontFamily: 'BalooBhaina',
+              ),
+            ),
+          ),
         ],
       ),
     ),
   );
 }
 
-class MyCustomClipper extends CustomClipper<Path>{
+class MyCustomClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    final path =Path();
-    path.lineTo(0, (3*size.height)/4);
-    path.quadraticBezierTo(size.width/2, size.height*1.2, size.width, (3*size.height)/4);
+    final path = Path();
+    path.lineTo(0, (3 * size.height) / 4);
+    path.quadraticBezierTo(
+        size.width / 2, size.height * 1.2, size.width, (3 * size.height) / 4);
     path.lineTo(size.width, 0);
     path.close();
     return path;
@@ -52,5 +54,4 @@ class MyCustomClipper extends CustomClipper<Path>{
   bool shouldReclip(CustomClipper<Path> oldClipper) {
     return false;
   }
-
 }

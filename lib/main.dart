@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'clipedHeaderWidget.dart';
 import 'cardWidgets.dart';
-// import 'webScrap.dart';
+import 'apiService.dart';
 
+var apiCall = new ApiHandeler();
 void main() => runApp(
       MaterialApp(
         home: SafeArea(
@@ -18,12 +19,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int infected = 1803655;
-  int recovered = 758642;
-  int dead = 38036;
+  var covidData = apiCall.getData();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.access_time),
+          onPressed: () {
+            setState(() {
+              covidData = apiCall.getData();
+            });
+          }),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -83,7 +89,7 @@ class _MyAppState extends State<MyApp> {
                       'Current Cases',
                       style: TextStyle(
                         color: Colors.black54,
-                        fontSize: 35.0,
+                        fontSize: 31.0,
                         fontFamily: 'BalooBhaina',
                       ),
                     ),
@@ -94,10 +100,10 @@ class _MyAppState extends State<MyApp> {
                       ),
                     ),
                     Text(
-                      '$infected',
+                      '$covidData[0]',
                       style: TextStyle(
                         color: Colors.black54,
-                        fontSize: 35.0,
+                        fontSize: 31.0,
                         fontFamily: 'BaloooBhaina',
                       ),
                     ),
@@ -138,7 +144,7 @@ class _MyAppState extends State<MyApp> {
                           ),
                         ),
                         Text(
-                          '$recovered',
+                          '$covidData[1]',
                           style: TextStyle(
                             color: Colors.black54,
                             fontSize: 20.0,
@@ -172,7 +178,7 @@ class _MyAppState extends State<MyApp> {
                           ),
                         ),
                         Text(
-                          '$dead',
+                          '$covidData[2]',
                           style: TextStyle(
                             color: Colors.black54,
                             fontSize: 20.0,
@@ -192,18 +198,18 @@ class _MyAppState extends State<MyApp> {
                   barGraph(
                       color: Colors.yellow,
                       element: 'Infected',
-                      value: infected,
-                      div: infected),
+                      value: covidData[0],
+                      div: covidData[0]),
                   barGraph(
                       color: Colors.green,
                       element: 'Recovered',
-                      value: recovered,
-                      div: infected),
+                      value: covidData[1],
+                      div: covidData[0]),
                   barGraph(
                       color: Colors.red,
                       element: 'Deaths',
-                      value: dead,
-                      div: infected),
+                      value: covidData[2],
+                      div: covidData[0]),
                 ],
               ),
               height: 300.0,

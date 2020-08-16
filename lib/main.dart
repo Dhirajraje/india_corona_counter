@@ -19,7 +19,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var covidData = apiCall.getData();
+  List<dynamic> covidData = apiCall.getData();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,7 +100,7 @@ class _MyAppState extends State<MyApp> {
                       ),
                     ),
                     Text(
-                      '$covidData[0]',
+                      '${covidData[0]}',
                       style: TextStyle(
                         color: Colors.black54,
                         fontSize: 31.0,
@@ -144,7 +144,7 @@ class _MyAppState extends State<MyApp> {
                           ),
                         ),
                         Text(
-                          '$covidData[1]',
+                          '${covidData[1]}',
                           style: TextStyle(
                             color: Colors.black54,
                             fontSize: 20.0,
@@ -178,7 +178,7 @@ class _MyAppState extends State<MyApp> {
                           ),
                         ),
                         Text(
-                          '$covidData[2]',
+                          '${covidData[2]}',
                           style: TextStyle(
                             color: Colors.black54,
                             fontSize: 20.0,
@@ -191,33 +191,33 @@ class _MyAppState extends State<MyApp> {
                 ],
               ),
             ),
-            CustomCards(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  barGraph(
-                      color: Colors.yellow,
-                      element: 'Infected',
-                      value: covidData[0],
-                      div: covidData[0]),
-                  barGraph(
-                      color: Colors.green,
-                      element: 'Recovered',
-                      value: covidData[1],
-                      div: covidData[0]),
-                  barGraph(
-                      color: Colors.red,
-                      element: 'Deaths',
-                      value: covidData[2],
-                      div: covidData[0]),
-                ],
-              ),
-              height: 300.0,
-              width: double.infinity,
-              borderRadius: 10.0,
-              padding: EdgeInsets.symmetric(horizontal: 25),
-              margin: EdgeInsets.all(10.0),
-            ),
+            // CustomCards(
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //     children: <Widget>[
+            //       barGraph(
+            //           color: Colors.yellow,
+            //           element: 'Infected',
+            //           value: covidData[0],
+            //           div: covidData[0]),
+            //       barGraph(
+            //           color: Colors.green,
+            //           element: 'Recovered',
+            //           value: covidData[1],
+            //           div: covidData[0]),
+            //       barGraph(
+            //           color: Colors.red,
+            //           element: 'Deaths',
+            //           value: covidData[2],
+            //           div: covidData[0]),
+            //     ],
+            //   ),
+            //   height: 300.0,
+            //   width: double.infinity,
+            //   borderRadius: 10.0,
+            //   padding: EdgeInsets.symmetric(horizontal: 25),
+            //   margin: EdgeInsets.all(10.0),
+            // ),
           ],
         ),
       ),

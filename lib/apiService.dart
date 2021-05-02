@@ -2,22 +2,22 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ApiHandeler {
-  List<int> _values;
-  void _fetchData() async {
-    _values = [0, 0, 0];;
-    var responce = await http.get(Uri.encodeFull(
-        'https://api.covid19api.com/total/country/India'));
-    List data = json.decode(responce.body);
-    var currentData = data[data.length - 1];
-    _values[0] = currentData['Confirmed'];
-    _values[1] = currentData['Recovered'];
-    _values[2] = currentData['Deaths'];
+  late List<int?> _values;
+  Future<void> _fetchData() async {
+    _values = [0, 0, 0];
+
+    var responce =
+        await http.get(Uri.https('api.rootnet.in', 'covid19-in/stats/latest'));
+    var data = json.decode(responce.body);
+    var currentData = data['data']['summary'];
+    _values[0] = currentData['confirmedCasesIndian'];
+    _values[1] = currentData['discharged'];
+    _values[2] = currentData['deaths'];
   }
 
-  getData() {
-    _fetchData();
+  Future<List> getData() async {
+    await _fetchData();
     List covidData = _values.toList();
-    print(covidData);
     return covidData;
   }
 }

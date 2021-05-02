@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class CustomCards extends StatelessWidget {
-  double height = 0, width = 0, borderRadius = 0;
-  EdgeInsets padding = EdgeInsets.all(0), margin = EdgeInsets.all(0);
-  Widget child = Container();
+  double? height = 0, width = 0, borderRadius = 0;
+  EdgeInsets? padding = EdgeInsets.all(0), margin = EdgeInsets.all(0);
+  Widget? child = Container();
   CustomCards(
-      {double height,
-      double width,
-      double borderRadius,
-      EdgeInsets padding,
-      EdgeInsets margin,
-      Widget child}) {
+      {double? height,
+      double? width,
+      double? borderRadius,
+      EdgeInsets? padding,
+      EdgeInsets? margin,
+      Widget? child}) {
     this.child = child;
     this.height = height;
     this.width = width;
@@ -27,7 +27,7 @@ class CustomCards extends StatelessWidget {
       width: this.width,
       decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(this.borderRadius)),
+          borderRadius: BorderRadius.all(Radius.circular(this.borderRadius!)),
           boxShadow: [
             BoxShadow(
               color: Colors.grey,
@@ -41,15 +41,17 @@ class CustomCards extends StatelessWidget {
 }
 
 // ignore: missing_return
-Color goodMatchColor(Color color) {
+Color goodMatchColor(Color? color) {
   if (color == Colors.green)
     return Colors.teal;
   else if (color == Colors.yellow)
     return Colors.orangeAccent;
   else if (color == Colors.red) return Colors.pinkAccent;
+  return Colors.black;
 }
 
-Widget barGraph({int value, String element, Color color, int div}) {
+Widget barGraph(
+    {required int value, String? element, Color? color, required int div}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
     mainAxisAlignment: MainAxisAlignment.end,
@@ -64,7 +66,7 @@ Widget barGraph({int value, String element, Color color, int div}) {
         height: value / (div * 0.005),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [goodMatchColor(color), color],
+            colors: [goodMatchColor(color), color!],
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
           ),

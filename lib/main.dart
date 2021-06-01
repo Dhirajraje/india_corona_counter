@@ -84,7 +84,6 @@ class _MyAppState extends State<MyApp> {
                             ),
                           ],
                         ),
-                        height: 50.0,
                         width: double.infinity,
                         borderRadius: 25,
                         padding: EdgeInsets.symmetric(horizontal: 25),
@@ -93,7 +92,6 @@ class _MyAppState extends State<MyApp> {
                       ),
                       CustomCards(
                           width: double.infinity,
-                          height: 190,
                           margin: EdgeInsets.symmetric(
                               horizontal: 15, vertical: 10),
                           borderRadius: 10.0,
@@ -131,7 +129,6 @@ class _MyAppState extends State<MyApp> {
                             ],
                           )),
                       CustomCards(
-                        height: 130,
                         width: double.infinity,
                         margin: EdgeInsets.symmetric(
                           horizontal: 15,
@@ -217,6 +214,7 @@ class _MyAppState extends State<MyApp> {
                       CustomCards(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
                             barGraph(
                                 color: Colors.yellow,
@@ -235,7 +233,6 @@ class _MyAppState extends State<MyApp> {
                                 div: covidData[0]),
                           ],
                         ),
-                        height: 300.0,
                         width: double.infinity,
                         borderRadius: 10.0,
                         padding: EdgeInsets.symmetric(horizontal: 25),

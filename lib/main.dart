@@ -4,7 +4,6 @@ import 'cardWidgets.dart';
 import 'apiService.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-var apiCall = new ApiHandeler();
 void main() => runApp(
       MaterialApp(
         home: SafeArea(
@@ -20,42 +19,44 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var covidData;
-  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: RefreshIndicator(
         color: Colors.deepOrangeAccent,
         onRefresh: () async {
-          await apiCall.getData().then((value) => () {
-                setState(() {
-                  covidData = value;
-                });
-              });
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          setState(() async {
+            covidData = await fetchData();
+          });
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
               content: Text(
-            'Reload successful',
-            style: TextStyle(
-              fontSize: 15,
-              fontFamily: 'BalooBhaina',
-              color: Colors.deepOrangeAccent,
+                'Reload successful',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: 'BalooBhaina',
+                  color: Colors.deepOrangeAccent,
+                ),
+              ),
             ),
-          )));
+          );
         },
-        child: FutureBuilder(
-            future: apiCall.getData(),
+        child: FutureBuilder<List<int>>(
+            future: fetchData(),
             builder: (context, snapshot) {
-              if (!snapshot.hasData || isLoading) {
+              if (snapshot.connectionState != ConnectionState.done) {
                 return LoadingScreen();
               } else {
                 covidData = snapshot.data;
                 return SingleChildScrollView(
                   child: Column(
-                    children: <Widget>[
+                    children: [
                       appHeaderContainer(),
                       CustomCards(
                         child: Row(
-                          children: <Widget>[
+                          children: [
                             Expanded(
                               flex: 1,
                               child: Icon(

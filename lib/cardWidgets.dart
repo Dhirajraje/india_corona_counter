@@ -26,13 +26,10 @@ class CustomCards extends StatelessWidget {
       height: this.height,
       width: this.width,
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(this.borderRadius!)),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey,
-            )
-          ]),
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(this.borderRadius!)),
+        boxShadow: [BoxShadow(blurRadius: 0.1)],
+      ),
       padding: this.padding,
       margin: this.margin,
       child: this.child,
